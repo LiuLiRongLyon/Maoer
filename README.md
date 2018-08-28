@@ -17,7 +17,9 @@
 
 ### 数据
 	利用Python多线程爬虫网上数据并进行清洗，将数据格式与Django的字段类型以及外键关系做正确转化，再将数据存入Mysql数据库中。
-![](http://github.com/LiuLiRongLyon/maoer/raw/master/网站截图/登录.png)
+  
+  ![](http://github.com/LiuLiRongLyon/maoer/raw/master/网站截图/登录.png)
+  
 ### 功能
 #####  1、登录
 		登录过程中使用到的验证码，使用Ajax加载，调用后端的api，加载验证码，将验证码存入session中，校验验证码直接从session中取出与用户输入的前端验证码进行校验。
