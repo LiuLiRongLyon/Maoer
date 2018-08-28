@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="agent-pc theme-b theme-bwhite">
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="keywords" content="猫耳影评网站">
+    <meta name="description" content="主页">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lib2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.2041.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bwhite.css' %}" id="themeCssPath">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}" data-main="indexMain"></script>
+    <title>猫耳影评</title>
+</head>
+<body id="longPage" class="gh0  longPage   ">
+<div class="bodyMask"></div>
+
+{% include 'sub/nav.html' %}
+
+<div id="sitecontent" class="ff_sitecontent">
+    <div class="npagePage ff_pageList">
+        <div class="content">
+            <div class="mlist news module ff_noSlider" style=" ">
+                <div class="bgmask"></div>
+                <div class="module_container">
+                    <div class="container_category wow movedx" data-movedx-mid="2" data-movedx-distance="15">
+                        <a href="#" class="active">
+                            <span>长评</span>
+                        </a>
+                    </div>
+                    <div class="container_content">
+                        <div class="content_wrapper">
+                            <div class="content_list">
+                                {% if movies %}
+                                    {% for movie in movies %}
+                                        <div id="news_item_0" class="item_block wow first"
+                                             style="height:250px;animation-delay:.0s">
+                                            <a href="{% url 'comment' movie.id %}" class="item_img" target="_blank"><img
+                                                    style="height: 250px;width: 200px" src="{{ movie.poster.url }}"/>
+                                                <div class="rectborder" style="height: 175px;"></div>
+                                                <i class="icon iconfont icon-add"></i></a>
+                                            <div class="item_wrapper">
+                                                <div class="item_info">
+                                                    <a href="{% url 'comment' movie.id %}" target="_blank">
+                                                        <p class="title">影名：{{ movie.name }}</p>
+                                                    </a>
+                                                    <p class="subtitle ellipsis"></p>
+                                                    <div class="description">电影评分：{{ movie.score }}</div>
+                                                </div>
+                                                <div class="item_tags"><i class="fa fa-tags"></i>
+                                                    <a href="{% url 'comment' movie.id %}">更多影评信息</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% empty %}
+                                        <p>未查询到任何结果</p>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div id="pages">
+                            <a href="#" class="page-item  active">1</a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+{% include 'sub/footer.html' %}
+</div>
+</body>
+
+</html>

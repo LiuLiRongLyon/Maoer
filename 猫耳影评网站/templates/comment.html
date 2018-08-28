@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="agent-pc theme-b theme-bwhite">
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="keywords" content="猫耳影评网站">
+    <meta name="description" content="主页">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lib2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.2041.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bwhite.css' %}" id="themeCssPath">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}" data-main="indexMain"></script>
+    <title>猫耳影评</title>
+</head>
+
+<body id="longPage" class="gh0  longPage   ">
+<div class="bodyMask"></div>
+{% include 'sub/nav.html' %}
+<div id="sitecontent" class="ff_sitecontent">
+    <div class="npagePage post ff_postPage">
+        {% if movie %}
+            {#影评网页上面的电影信息#}
+            <div class="content">
+                <div class="mlistpost team module">
+                    <div class="module_container">
+                        <div class="container_content">
+                            <div class="content_wrapper">
+                                <div id="postWrapper">
+                                    <div id="imageWrapper">
+                                        <div id="imageContent" class="mlist">
+                                            <div class="slider" data-slider-num="1">
+                                                <div class="content_list">
+                                                    <div id="imageitem_0" class="item_block">
+                                                        <div class="image"><img src="{{ movie.poster.url }}"
+                                                                                data-thumb="./statics/images/1491380254145_80x80.jpg"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="postInfo">
+                                        <div class="wrapper">
+                                            <p class="title">影名：{{ movie.name }}</p>
+                                            <p class="subtitle"></p>
+                                            <div class="description">
+                                                <p>主演：{{ movie.actor }}</p><br/>
+                                                <p>类型标签：{{ movie.tag_char }}</p><br/>
+                                                <p>电影评分：{{ movie.score }}</p><br/>
+                                                <p>评论数：{{ reviews|length }}</p><br/>
+                                                <p><br/></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            {#影评网页下面的影评列表#}
+            <div class="content">
+                <div class="mlist job module ff_noSlider" style=" ">
+                    <div class="bgmask"></div>
+                    <div class="module_container">
+                        <div class="container_category wow movedx" data-movedx-mid="2" data-movedx-distance="15">
+                            <a href="#" class="active">
+                                <span>全部</span>
+                            </a>
+                        </div>
+                        <div class="container_content">
+                            <div class="content_wrapper">
+                                <div class="content_list">
+                                    <div id="job_item_5" class="item_block head" style="animation-delay:.1s">
+                                        <div class="item_info">
+                                        </div>
+                                    </div>
+                                    {% if reviews %}
+                                        {% for review in reviews %}
+                                            <div id="job_item_1" class="item_block wow" style="animation-delay:.1s">
+                                                <div class="item_info">
+                                                    <p class="title ellipsis">{{ review.name|safe }}</p>
+                                                    <p class="more">
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </p>
+                                                </div>
+                                                <div class="item_wrapper hide">
+                                                    <div class="description">
+                                                        <p class="subtitle ellipsis"></p>
+                                                        <p class="cattitle ellipsis"></p>
+                                                        <p class="more"></p><br/>
+                                                        <p>
+                                                            <a href="{% url 'reviews' review.id %}" target="_self"
+                                                               class="more">详情</a>
+                                                            <br/>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div id="pages">
+                                <a href="#" class="page-item  active">1</a>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% include 'sub/footer.html' %}
+</body>
+</html>

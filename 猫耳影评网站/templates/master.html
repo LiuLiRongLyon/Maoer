@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="agent-pc theme-b theme-bwhite">
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="keywords" content="猫耳影评网站">
+    <meta name="description" content="主页">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lib2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.2041.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bwhite.css' %}" id="themeCssPath">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}" data-main="indexMain"></script>
+    <title>猫耳影评</title>
+</head>
+
+<body id="longPage" class="gh0  longPage   ">
+<div class="bodyMask"></div>
+{% include 'sub/nav.html' %}
+<div id="sitecontent" class="ff_sitecontent">
+    <div id="navMini">
+        <div id="navMiniTable">
+            <div id="navMiniCell">
+                <ul class="nav">
+                    <li class="search-but" style=" opacity:0">
+                        <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="indexPage" class="ff_indexPage" data-scroll-ease="Expo.easeInOut" data-scroll-speed="1" data-control="0"
+         data-control-wheel="0" data-singlescreen="0">
+        <!--顶部滑动海报-->
+        {% include 'sub/banner.html' %}
+        <!--电影海报和简介-->
+        <div class="content">
+            <div class="mlist project module ff_noSlider" style=" ">
+                <div class="bgmask"></div>
+                <div class="module_container">
+                    <div class="container_category wow movedx" data-movedx-mid="2" data-movedx-distance="15">
+                        <a href="#" class="active">
+                            <span>全部</span>
+                        </a>
+                    </div>
+                    <div class="container_content">
+                        <div class="content_wrapper">
+                            <div class="content_list movedx" data-movedx-mid="2" data-movedx-distance="15">
+                                {% for movie in movies %}
+                                    <div id="project_item_0" class="item_block wow" style="animation-delay:.0s">
+                                        <a href="{% url 'comment' movie.id %}" class="item_link" target="_blank"><img
+                                                src="{{ movie.poster.url }}"/>
+                                            <div class="item_wrapper">
+                                                <div class="item_info move">
+                                                    <p class="title ellipsis">影名：{{ movie.name|safe }}</p>
+                                                    <p class="subtitle ellipsis">评分：{{ movie.score }}</p>
+                                                    <p>类型：{{ movie.tag_char }}</p>
+                                                </div>
+                                                <i class="icon iconfont icon-add"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        {% if movies %}
+                            <div id="pages">
+                                {% for page_num in movies.paginator.page_range %}
+                                    <a href="?page={{ page_num }}"
+                                       class="page-item {% if movies.number == page_num %}active{% endif %}">{{ page_num }}</a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+{% include 'sub/footer.html' %}
+</body>
+
+</html>

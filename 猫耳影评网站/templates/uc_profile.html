@@ -1,0 +1,74 @@
+{% extends 'uc_base.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'avator/css/amazeui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'avator/css/amazeui.cropper.css' %}">
+    <link rel="stylesheet" href="{% static 'avator/css/custom_up_img.css' %}">
+    <style type="text/css">
+        .form-group input {
+            height: 30px;
+            width: 300px;
+            font-size: 20px;
+            border: solid 1px darkgrey;
+            color: white;
+            margin-left: 50px;
+        }
+
+        .form-group label {
+            font-size: 15px;
+            color: white
+        }
+    </style>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'avator/js/amazeui.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'avator/js/cropper.min.js' %}" charset="utf-8"></script>
+    {#    注意导入顺序#}
+    <script src="{% static 'avator/js/custom.js' %}"></script>
+    <script src="{% static 'avator/js/custom_up_img.js' %}" charset="utf-8"></script>
+{% endblock %}
+{% block userblank %}
+    {% if user.is_authenticated %}
+        <div class="panel">
+            <div class="panel-body">
+                <h4></h4>
+                <hr/>
+                <div class="row col-md-10">
+                    <form class="form-horizontal" role="form" method="post" action="{% url 'usercenter:profile' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="inputPasswordOld" class="col-lg-4 control-label">用户名</label>
+                            <input type="text" class="form-control" id="inputPasswordOld"
+                                   value="{{ request.user.username }}" name="username">
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="inputPasswordOld" class="col-lg-2 control-label">旧密码</label>
+                            <input type="password" class="form-control" id="inputPasswordOld" name="oldpasswd">
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="inputPasswordNew1" class="col-lg-2 control-label">新密码</label>
+                            <input type="password" class="form-control" id="inputPasswordNew1" name="newpasswd1">
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="inputPasswordNew1" class="col-lg-2 control-label">新密码</label>
+                            <input type="password" class="form-control" id="inputPasswordNew2" name="newpasswd2">
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button type="submit"
+                                        style="width: 200px;height: 40px;background-color: dodgerblue;border-radius:5px;border: 0px;color: white;margin-left: 80px">
+                                    提交
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    {{ ret_info }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

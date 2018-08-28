@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="agent-pc theme-b theme-bwhite">
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="keywords" content="猫耳影评网站">
+    <meta name="description" content="主页">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lib2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.2041.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bwhite.css' %}" id="themeCssPath">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}" data-main="indexMain"></script>
+    <title>猫耳影评网</title>
+</head>
+
+<body id="longPage" class="gh0  longPage   ">
+<div class="bodyMask"></div>
+
+{% include 'sub/nav.html' %}
+
+<div id="sitecontent" class="ff_sitecontent">
+    <div class="npagePage pageEditor" id="page_contact">
+        <div class="content">
+            <div class="mpageEditor module">
+                <div class="module_container">
+                    <div class="container_header wow">
+                        <p class="title">发表影评</p>
+                    </div>
+                    <div class="container_content">
+                        <div class="content_wrapper">
+                            <div class="postbody">
+                                <p><br/></p>
+                                <p>
+                                    <div id="mcontact" class="mcontact module" style=" ">
+                                        <div class="module_container">
+                                            <div class="container_content">
+                                                <div class="content_wrapper">
+                                                    <div id="contactlist" class="contactlist">
+                                                        <div id="contactinfo" class="contactinfo wow">
+                                                            <div class="ff_social">
+                                                            </div>
+                                                        </div>
+                                                        <div id="contactform" class="contactform wow">
+                                                            <form id="myform">
+                                                                {% csrf_token %}
+                                <p class="contactform_eml">
+                                    <input type="text" class="inputtxt" name="movie_name" placeholder="影名"
+                                           autocomplete="off">
+                                </p>
+                                <p class="contactform_eml">
+                                    <input type="text" class="inputtxt" name="review_name" placeholder="影评名"
+                                           autocomplete="off">
+                                </p>
+                                <p class="contactform_content">
+                                    <textarea class="inputtxt" name="content" placeholder="影评"
+                                              autocomplete="off"></textarea>
+                                </p>
+                                <p class="contactform_submit">
+                                    <button type="button" id="tijiao"
+                                            style="width: 80px;height: 40px;background-color: #1c1c1c;color: gray;border: solid 1px lightgrey">
+                                        发表
+                                    </button>
+                                </p>
+                                </form>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </p>
+    </div>
+</div>
+{% include 'sub/footer.html' %}
+<script>
+    $('#tijiao').click(function () {
+        $.ajax({
+            url: "{% url 'commit' %}",
+            type: 'POST',
+            data: $("#myform").serialize(),
+            {#                dataType:'json',#}
+            success: function (data) {
+                if (data.status == 200) {
+                    window.location.href = '{% url 'master' %}';
+                } else {
+                    msg = "新错误类型"
+                    if (data.status == 400 || data.status == 401) {
+                        msg = data.msg
+                    } else {
+                        for (var i in data.msg) {
+                            msg = i + data.msg[i]
+                            break
+                        }
+                    }
+                    $.gritter.add({
+                        title: '提交结果',
+                        text: msg
+                    });
+                }
+            },
+            error: function (data) {
+            },
+            beforeSend: function (xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            },
+        })
+    })
+</script>
+</body>
+</html>

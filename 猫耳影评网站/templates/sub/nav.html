@@ -1,0 +1,118 @@
+<div id="header">
+    <div class="wrapper">
+        <div class="content">
+            <div id="headTop">
+                <a href="#" id="logo">
+                    <h1>猫耳影评</h1></a>
+                <div id="openBtn" class="fl btn">
+                    <div class="lcbody">
+                        <div class="lcitem top">
+                            <div class="rect top"></div>
+                        </div>
+                        <div class="lcitem bottom">
+                            <div class="rect bottom"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="navWrapper">
+                <div class="content">
+                    <ul class="nav movedx" data-movedx-mid="1">
+                        <li class="navitem">
+                            <a class="active" href="{% url 'master' %}" target="_self"> <span data-title="首页">首页</span>
+                            </a>
+                        </li>
+                        <li class="navitem">
+                            <a class="active" href="{% url 'commit' %}" target="_self"> <span data-title="发表">发表</span>
+                            </a>
+                        </li>
+                        <li class="navitem">
+                            <a class="active" href="{% url 'high_score' %}" target="_self"> <span
+                                    data-title="评分">高分经典</span> </a>
+                        </li>
+                        <li class="navitem">
+                            <a class="active" href="#" target="_self"> <span data-title="分类">影片分类</span><i
+                                    class="fa fa-angle-down"></i> </a>
+                            <ul class="subnav">
+                                <li>
+                                    <a href="{% url 'category' '爱情' %}" target="_self" id='1'>爱情</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'category'  '剧情' %}" target="_self" id='2'>剧情</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'category' '悬疑' %}" target="_self" id="3">悬疑</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'category' '纪录片' %}" target="_self" id="4">纪录片</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'category' '冒险' %}" target="_self" id="5">冒险</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'category' '犯罪' %}" target="_self" id="6">犯罪</a>
+                                </li>
+                            </ul>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                            <li class="navitem">
+                                <a class="active" href="#" target="_self"> <span data-title="分类">个人中心</span><i
+                                        class="fa fa-angle-down"></i> </a>
+                                <ul class="subnav">
+                                    <li>
+                                        <a href="{% url 'usercenter:profile' %}" target="_self" id='1'>修改密码</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'usercenter:contribute' %}" target="_self" id='2'>我的发表</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'usercenter:collect' %}" target="_self" id="3">我的收藏</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'accounts:logout' %}" target="_self" id="3">退出</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li class="navitem">
+                                <a class="active" href="{% url 'accounts:login' %}" target="_self"> <span
+                                        data-title="登录">登录</span> </a>
+                            </li>
+                            <li class="navitem">
+                                <a class="active" href="{% url 'accounts:registe' %}" target="_self"> <span
+                                        data-title="注册">注册</span> </a>
+                            </li>
+                        {% endif %}
+                        <li class="navitem">
+                            <a class="active" href="{% url 'about' %}" target="_self"> <span data-title="发表">关于</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="pageTarget" class="ff_pageTarget module">
+                    <div class="module_container">
+                        <div class="container_target wow">
+                            <form method="post" action="{% url 'search' %}">
+                                {% csrf_token %}
+                                <input style="border: 1px solid white;color:#ffffff;font-size:18px;" name="keywords"
+                                       id="keywords1" placeholder="电影名" type="text">
+                                <input value="搜索" type="submit" id="submit_search"
+                                       style="font-size:18px;color:#ffffff;;border: 1px solid white;border-radius:5px;width: 50px;height: 25px;background-color: #1c1c1c">
+                                </input>
+                                <script>
+                                    function search() {
+                                        var tv = $("#keywords1").val();
+                                        if (tv.length > 0) {
+                                            $('#forum_search1').submit();
+                                        }
+                                    }
+                                </script>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+body{
+     background: #1c1c1c;
+     color:white;
+}
+form{
+    width: 650px;
+    margin: auto;
+    margin-top:200px;
+    border: solid grey;
+    padding: 20px;
+}
+.wai{
+    height: 50px;
+    margin: 20px;
+}
+a {
+    color: dodgerblue;
+    text-decoration: none;
+}
+label{
+    width: 50px;
+    height: 30px;
+    display: block;
+    text-align: right;
+    float: left;
+    margin-right: 10px;
+    margin-top: 6px;
+}
+.kong{
+    margin-right: 10px;
+    height: 30px;
+    width: 250px;
+    padding-right: 0px;
+}
+.kong1{
+    width: 120px;
+    height:30px;
+    margin-left: 1px;
+}
+.regist{
+    background-color: dodgerblue;
+    width: 350px;
+    height: 40px;
+    border: none;
+}
+.check {
+    width: 200px;
+    float: right;
+    font-size: small;
+    color: gray;
+}

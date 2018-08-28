@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="agent-pc theme-b theme-bwhite">
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="keywords" content="猫耳影评网站">
+    <meta name="description" content="主页">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lib2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.2041.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bwhite.css' %}" id="themeCssPath">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}" data-main="indexMain"></script>
+    <title>猫耳影评网-电影从来不只是看看</title>
+    {% load staticfiles %}
+</head>
+
+<body id="longPage" class="gh0  longPage   ">
+<div class="bodyMask"></div>
+{% include 'sub/nav.html' %}
+<div id="sitecontent" class="ff_sitecontent">
+    <div class="npagePage pageEditor" id="page_about">
+        <div class="content">
+            <div class="mpageEditor module">
+                <div class="module_container">
+                    <div class="container_header wow">
+                        <p class="title">我们的初衷</p>
+                        <p class="subtitle">Lyon</p>
+                    </div>
+                    <div class="container_content">
+                        <div class="content_wrapper">
+
+                            <div class="postbody">
+                                <table>
+                                    <tbody>
+                                    <tr class="firstRow">
+                                        <td colspan="1" rowspan="1" valign="top" width="450"><img
+                                                src="{% static 'images/about.jpg' %}" vspace="0" border="0"/><br/></td>
+                                        <td style="word-break: break-all;" valign="top" width="40"><br/></td>
+                                        <td style="word-break: break-all;" valign="top" width="">
+                                            <p>
+                                                影评是是电影艺术与观众的桥梁，是实现电影三重价值（艺术的、社会的、经济的）的重要手段。如今快节奏的生活节奏时代使得更多的观众对于电影只是泛泛看之并草草了之，忽略了电影实质内涵及其要表达的意愿，因此猫耳影评网以电影不只是用来看看为宗旨，致力于专业影评及社会影评相互结合，形成专业的、良好的互联网电影影评环境，促进我国电影事业的发展。</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <p><br/></p>
+                                <hr/>
+                                <p style="text-align: left;"><span style="font-size: 24px; color:#333"><span
+                                        style="color: rgb(51, 51, 51); font-size: 16px;"></span><br/></span>
+                                </p>
+                                <p style="text-align: left;"><span style="color: rgb(255, 255, 255); font-size: 16px;">注意</span>
+                                </p>
+                                <p class="ordinary-output target-output"><span class="">本网站仅供个人学习使用，不做任何商用。谢谢配合</span>
+                                </p>
+                                <p><br/></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'sub/footer.html' %}
+</body>
+</html>

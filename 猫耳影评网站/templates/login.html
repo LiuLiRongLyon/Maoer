@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta author="liulirong">
+    <title>登录</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+</head>
+<body>
+<fieldset>
+    <div>
+        <form method="POST" action="{% url 'accounts:login' %}">
+            {% csrf_token %}
+            <div class="ping">
+                <p><input type="text" name="username" value placeholder="手机/用户名"></p>
+                <p><input type="password" name="passwd" value placeholder="密码"></p>
+                <p>
+                    <input type="text" name="captcha" value placeholder="验证码" style="width:180px;">
+                    <a href="#">
+                        <img style="width: 100px;height: 33px;margin: 9px -8px -10px 2px;" id="captcha_img" src="#"
+                             onclick="get_captcha_img()">
+                    </a>
+                </p>
+            </div>
+            <div>
+                <input type="radio" id="auto" value="next">
+                <label for="auto">下次自动登录</label>
+            </div>
+            <div class="ping">
+                <p><input type="submit" value="登录" class="btn" style="height: 40px"></p>
+            </div>
+            <p style="font-size: small">
+                <a href="{% url 'accounts:registe' %}">立即注册</a>
+                <a href="#" style="float: right">短信快捷登录</a>
+            </p>
+        </form>
+    </div>
+    <div class="bottom">
+        <a href="{% url 'master' %}" style="float: right;font-size: 16px;">返回主页</a>
+    </div>
+</fieldset>
+<script>
+    get_captcha_img();
+    function get_captcha_img() {
+        $.ajax({
+            url: '{% url 'apis:get_captcha' %}',
+            type: 'GET',
+            dataType: 'text',
+            success: function (data) {
+                $('#captcha_img').attr('src', data);
+            }
+        });
+    }
+</script>
+</body>
+</html>

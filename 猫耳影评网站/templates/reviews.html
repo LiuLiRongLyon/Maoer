@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="agent-pc theme-b theme-bwhite">
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="keywords" content="猫耳影评网站">
+    <meta name="description" content="主页">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lib2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.2041.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bwhite.css' %}" id="themeCssPath">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}" data-main="indexMain"></script>
+    <title>猫耳影评</title>
+</head>
+
+<body id="longPage" class="gh0  longPage   ">
+<div class="bodyMask"></div>
+
+{% include 'sub/nav.html' %}
+
+<div id="sitecontent" class="ff_sitecontent">
+    <div class="content">
+        <div class="mlistpost news module">
+            <div class="module_container">
+                <div class="container_content">
+                    <div class="content_wrapper">
+                        <div id="postWrapper">
+                            {% if article %}
+                                <div id="postContent">
+                                    <div id="postInfo">
+                                        <p class="title">文章标题：{{ article.name|safe }}</p>
+                                        <p class="subtitle">2016-12-08</p>
+                                    </div>
+                                    <div class="postbody">
+                                        文章内容为：{{ article.content|safe }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+{% include 'sub/footer.html' %}
+
+</body>
+
+</html>
