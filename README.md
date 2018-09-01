@@ -23,7 +23,7 @@
 ### 功能
 #####  1、登录
 		登录过程中使用到的验证码，使用Ajax加载，调用后端的api，加载验证码，将验证码存入session中，校验验证码直接从session中取出与用户输入的前端验证码进行校验。
-![](index_files/_u767B_u5F551535463043008.png)
+![](https://github.com/LiuLiRongLyon/maoer/blob/master/%E7%BD%91%E7%AB%99%E6%88%AA%E5%9B%BE/%E7%99%BB%E5%BD%95.png?raw=true)
 #####  2、注册
 		注册时使用Ajax动态加载，对用户输入的数据进行前端初步验证：输入是否合法，用户名是否重复等，手机验证码利用云之讯平台，调用其接口实现向用户发送验证码，由于需要具有时效性，因此服务端将验证码存入redis数据库，校验时从redis数据库中取出校验即可
  ![](index_files/_u6CE8_u518C.png)
