@@ -43,7 +43,7 @@
  ![](index_files/_u53D1_u8868.png)
 ##### 8、用户中心
 		主要定制用户的个人界面，目前只做了修改密码功能，例如上传、修改头像，展示用户收藏以及发表的影评等功能尚未完成。
- ![](index_files/_u4E2A_u4EBA_u4E2D_u5FC3.png)
+https://raw.githubusercontent.com/LiuLiRongLyon/maoer/master/%E7%BD%91%E7%AB%99%E6%88%AA%E5%9B%BE/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83.png
 
 
 ### 部署
